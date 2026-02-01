@@ -1,0 +1,9 @@
+target/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.git/
+.gitignore
+docs/
+.pytest_cache/
