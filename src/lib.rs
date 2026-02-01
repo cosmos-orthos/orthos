@@ -3,7 +3,9 @@ pub mod matrix;
 pub mod ops;
 pub mod vector;
 
-use numpy::{PyArray1, PyArray2, PyReadonlyArray1, PyReadonlyArray2, PyUntypedArrayMethods, ToPyArray};
+use numpy::{
+    PyArray1, PyArray2, PyReadonlyArray1, PyReadonlyArray2, PyUntypedArrayMethods, ToPyArray,
+};
 use pyo3::prelude::*;
 
 use crate::matrix::Matrix;
