@@ -61,7 +61,9 @@ jobs:
           pip install maturin pytest numpy
 
       - name: Build and install
-        run: maturin develop
+        run: |
+          maturin build --release
+          pip install target/wheels/*.whl
 
       - name: Run Python tests
         run: pytest tests/python/ -v
