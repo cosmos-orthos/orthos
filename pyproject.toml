@@ -4,9 +4,9 @@ build-backend = "maturin"
 
 [project]
 name = "orthos"
-version = "0.1.0"
+version = "0.1.3"
 description = "High-performance linear algebra library written in Rust"
-readme = "README.md"
+readme = "README.pypi.md"
 requires-python = ">=3.9"
 license = {text = "Apache-2.0"}
 authors = [{name = "cosmos-orthos"}]
