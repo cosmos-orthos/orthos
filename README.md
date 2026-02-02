@@ -67,4 +67,4 @@ pytest tests/       # Python tests
 
 ## License
 
-MIT
+Apache-2.0

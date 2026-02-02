@@ -2,18 +2,39 @@
 name = "orthos"
 version = "0.1.0"
 edition = "2021"
-description = "High-performance linear algebra library written in Rust with Python bindings"
-license = "MIT"
+description = "High-performance linear algebra library written in Rust"
+license = "Apache-2.0"
+repository = "https://github.com/cosmos-orthos/orthos"
+documentation = "https://docs.rs/orthos"
+readme = "README.md"
+keywords = ["linear-algebra", "matrix", "vector", "math", "numpy"]
+categories = ["mathematics", "science"]
+exclude = [
+    ".github/",
+    "python/",
+    "tests/",
+    "examples/*.py",
+    "pyproject.toml",
+    "Dockerfile",
+    ".dockerignore",
+    "docs/",
+]
 
 [lib]
 name = "orthos"
 crate-type = ["cdylib", "rlib"]
 
+[features]
+default = []
+python = ["pyo3", "numpy"]
+
 [dependencies]
-pyo3 = { version = "0.23", features = ["extension-module"] }
-numpy = "0.23"
 faer = "0.22"
 thiserror = "2.0"
+
+# Optional Python bindings
+pyo3 = { version = "0.23", features = ["extension-module"], optional = true }
+numpy = { version = "0.23", optional = true }
 
 [dev-dependencies]
 criterion = "0.5"
