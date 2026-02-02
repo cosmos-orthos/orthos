@@ -123,8 +123,7 @@ mod python_bindings {
             let rows: Vec<String> = data
                 .iter()
                 .map(|row| {
-                    let elements: Vec<String> =
-                        row.iter().map(|x| format!("{:.6}", x)).collect();
+                    let elements: Vec<String> = row.iter().map(|x| format!("{:.6}", x)).collect();
                     format!("[{}]", elements.join(", "))
                 })
                 .collect();

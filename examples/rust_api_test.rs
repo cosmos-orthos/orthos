@@ -1,16 +1,13 @@
 //! End-to-end test for the Rust API
 //! Run with: cargo run --example rust_api_test
 
-use orthos::{Matrix, Vector, MatrixError, VectorError};
+use orthos::{Matrix, MatrixError, Vector, VectorError};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("=== End-to-End Rust API Test ===\n");
 
     println!("1. Matrix Creation");
-    let m1 = Matrix::from_rows(vec![
-        vec![1.0, 2.0],
-        vec![3.0, 4.0],
-    ])?;
+    let m1 = Matrix::from_rows(vec![vec![1.0, 2.0], vec![3.0, 4.0]])?;
     println!("   From rows: {:?}", m1.shape());
 
     let m2 = Matrix::zeros(3, 3);
@@ -23,14 +20,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("   Identity: {:?}", m4.shape());
 
     println!("\n2. Matrix Operations");
-    let a = Matrix::from_rows(vec![
-        vec![1.0, 2.0],
-        vec![3.0, 4.0],
-    ])?;
-    let b = Matrix::from_rows(vec![
-        vec![5.0, 6.0],
-        vec![7.0, 8.0],
-    ])?;
+    let a = Matrix::from_rows(vec![vec![1.0, 2.0], vec![3.0, 4.0]])?;
+    let b = Matrix::from_rows(vec![vec![5.0, 6.0], vec![7.0, 8.0]])?;
 
     let c = a.add(&b)?;
     println!("   a + b: OK");
@@ -67,11 +58,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("   Normalize: OK (norm = {})", normalized.norm());
 
     println!("\n4. Matrix-Vector Multiplication");
-    let m = Matrix::from_rows(vec![
-        vec![1.0, 2.0],
-        vec![3.0, 4.0],
-        vec![5.0, 6.0],
-    ])?;
+    let m = Matrix::from_rows(vec![vec![1.0, 2.0], vec![3.0, 4.0], vec![5.0, 6.0]])?;
     let v = Vector::new(vec![1.0, 1.0]);
     let result = orthos::ops::matvec(&m, &v)?;
     println!("   matvec: {:?}", result.to_vec());
