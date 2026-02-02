@@ -1,5 +1,3 @@
-use pyo3::exceptions::{PyIndexError, PyValueError};
-use pyo3::PyErr;
 use thiserror::Error;
 
 #[derive(Debug, Error)]
@@ -22,8 +20,10 @@ pub enum MatrixError {
     InvalidInput { message: String },
 }
 
-impl From<MatrixError> for PyErr {
-    fn from(err: MatrixError) -> PyErr {
+#[cfg(feature = "python")]
+impl From<MatrixError> for pyo3::PyErr {
+    fn from(err: MatrixError) -> pyo3::PyErr {
+        use pyo3::exceptions::{PyIndexError, PyValueError};
         match err {
             MatrixError::IndexOutOfBounds { .. } => PyIndexError::new_err(err.to_string()),
             _ => PyValueError::new_err(err.to_string()),
@@ -43,8 +43,10 @@ pub enum VectorError {
     InvalidInput { message: String },
 }
 
-impl From<VectorError> for PyErr {
-    fn from(err: VectorError) -> PyErr {
+#[cfg(feature = "python")]
+impl From<VectorError> for pyo3::PyErr {
+    fn from(err: VectorError) -> pyo3::PyErr {
+        use pyo3::exceptions::{PyIndexError, PyValueError};
         match err {
             VectorError::IndexOutOfBounds { .. } => PyIndexError::new_err(err.to_string()),
             _ => PyValueError::new_err(err.to_string()),

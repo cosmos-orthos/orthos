@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "High-performance linear algebra library written in Rust"
 readme = "README.md"
 requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "cosmos-orthos"}]
 classifiers = [
     "Programming Language :: Rust",
     "Programming Language :: Python :: Implementation :: CPython",
@@ -15,10 +17,18 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
 ]
 dependencies = [
     "numpy>=1.20",
 ]
+
+[project.urls]
+Homepage = "https://github.com/cosmos-orthos/orthos"
+Repository = "https://github.com/cosmos-orthos/orthos"
+Issues = "https://github.com/cosmos-orthos/orthos/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -27,6 +37,6 @@ dev = [
 ]
 
 [tool.maturin]
-features = ["pyo3/extension-module"]
+features = ["python", "pyo3/extension-module"]
 python-source = "python"
 module-name = "orthos._orthos"
